@@ -23,8 +23,29 @@ public class AccountServiceApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(BankAccountRepo bankAccountRepo){
+    CommandLineRunner commandLineRunner(BankAccountRepo bankAccountRepo, CustomerRestClient customerRestClient){
         return args -> {
+            customerRestClient.getAllCustomers().forEach(c ->{
+                BankAcount a1=BankAcount.builder()
+                        .accountId(UUID.randomUUID().toString())
+                        .currency("MAD")
+                        .balence(Double.valueOf(Math.random()*10000))
+                        .createdAt(LocalDate.now())
+                        .acountType(AcountType.SAVING_ACCOUNT)
+                        .customerId(Long.valueOf(c.getId()))
+                        .build();
+                BankAcount a2=BankAcount.builder()
+                        .accountId(UUID.randomUUID().toString())
+                        .currency("MAD")
+                        .balence(Double.valueOf(Math.random()*1000))
+                        .createdAt(LocalDate.now())
+                        .acountType(AcountType.CURRENT_ACCOUNT)
+                        .customerId(Long.valueOf(c.getId()))
+                        .build();
+                bankAccountRepo.save(a1);
+                bankAccountRepo.save(a2);
+            });
+
             BankAcount bankAcount1 = BankAcount.builder()
                     .accountId(UUID.randomUUID().toString())
                     .currency("MAD")
@@ -42,8 +63,8 @@ public class AccountServiceApplication {
                     .customerId(Long.valueOf(2))
                     .build();
 
-            List<BankAcount> bankAccountList = List.of(bankAcount1, bankAcount2);
-            bankAccountRepo.saveAll(bankAccountList);
+            //List<BankAcount> bankAccountList = List.of(bankAcount1, bankAcount2);
+            //bankAccountRepo.saveAll(bankAccountList);
         };
     }
 
