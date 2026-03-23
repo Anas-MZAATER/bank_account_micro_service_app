@@ -1,15 +1,18 @@
 package net.anas.customerservice;
 
+import net.anas.customerservice.config.GlobalConfig;
 import net.anas.customerservice.entities.Customer;
 import net.anas.customerservice.repository.CustomerRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 
 @SpringBootApplication
+@EnableConfigurationProperties(GlobalConfig.class)
 public class CustomerServiceApplication {
 
     public static void main(String[] args) {
