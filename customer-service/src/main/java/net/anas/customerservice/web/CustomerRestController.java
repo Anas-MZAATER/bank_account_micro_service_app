@@ -1,7 +1,6 @@
 package net.anas.customerservice.web;
 
 
-import lombok.AllArgsConstructor;
 import net.anas.customerservice.entities.Customer;
 import net.anas.customerservice.repository.CustomerRepo;
 import org.springframework.web.bind.annotation.GetMapping;
