@@ -1,0 +1,32 @@
+services:
+  discovery-service:
+    build: ./discovery-service
+    container_name: discovery-service
+    ports:
+      - '8761:8761'
+    expose:
+      - '8761'
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8761/actuator/health || exit 1" ]
+      interval: 5s
+      retries: 5
+      start_period: 40s   # laisse 40s à Spring Boot avant de commencer à checker
+
+  config-service:
+      build: ./config-service
+      container_name: config-service
+      ports:
+        - '9999:9999'
+      expose:
+        - '9999'
+      dns:
+        - 8.8.8.8
+        - 8.8.4.4
+      environment:
+        - DISCOVERY_SERVICE_URL=http://discovery-service:8761/eureka
+      depends_on:
+        discovery-service:
+          condition: service_healthy
