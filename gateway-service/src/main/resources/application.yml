@@ -1,6 +1,16 @@
-#spring:
-#  cloud:
-#    gateway:
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowed-origins: "*"
+            allowed-headers: "*"
+            allowed-methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
 #      routes:
 #        - id: r1
 #          uri: http://localhost:8080/
@@ -12,5 +22,3 @@
 #            - Path=/accounts/**
 #  application:
 #    name: gateway-service
-#server:
-#  port: 8888

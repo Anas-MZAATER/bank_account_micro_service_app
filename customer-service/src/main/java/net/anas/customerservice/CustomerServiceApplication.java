@@ -23,7 +23,7 @@ public class CustomerServiceApplication {
     CommandLineRunner commandLineRunner(CustomerRepo customerRepo){
         return args -> {
             Customer c1 = Customer.builder()
-                    .firstname("anas")
+                    .firstName("anas")
                     .lastName("mzaater")
                     .email("anasmz@gmail.com")
                     .build();
@@ -31,7 +31,7 @@ public class CustomerServiceApplication {
             List<Customer> customerList = List.of(
                     c1,
                     Customer.builder()
-                            .firstname("ahmed")
+                            .firstName("ahmed")
                             .lastName("rami")
                             .email("ahmed123@gmail.com")
                             .build()

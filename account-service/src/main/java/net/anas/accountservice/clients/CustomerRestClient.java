@@ -22,8 +22,8 @@ public interface CustomerRestClient {
     default Customer getDefaultCustomer(Long id, Exception exception){
         Customer defaultCustomer=new Customer();
         defaultCustomer.setId(id);
-        defaultCustomer.setFirstname("not Available");
-        defaultCustomer.setLastname("not Available");
+        defaultCustomer.setFirstName("not Available");
+        defaultCustomer.setLastName("not Available");
         defaultCustomer.setEmail("not Available");
         return defaultCustomer;
     }

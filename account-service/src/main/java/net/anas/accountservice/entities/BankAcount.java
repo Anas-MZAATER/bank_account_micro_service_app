@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class BankAcount {
     @Id
     private String accountId;
-    private Double balence;
+    private Double balance;
     private LocalDate createdAt;
     private String currency;
     @Enumerated(EnumType.STRING)

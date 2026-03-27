@@ -29,7 +29,7 @@ public class AccountServiceApplication {
                 BankAcount a1=BankAcount.builder()
                         .accountId(UUID.randomUUID().toString())
                         .currency("MAD")
-                        .balence(Double.valueOf(Math.random()*10000))
+                        .balance(Double.valueOf(Math.random()*10000))
                         .createdAt(LocalDate.now())
                         .acountType(AcountType.SAVING_ACCOUNT)
                         .customerId(Long.valueOf(c.getId()))
@@ -37,19 +37,19 @@ public class AccountServiceApplication {
                 BankAcount a2=BankAcount.builder()
                         .accountId(UUID.randomUUID().toString())
                         .currency("MAD")
-                        .balence(Double.valueOf(Math.random()*1000))
+                        .balance(Double.valueOf(Math.random()*1000))
                         .createdAt(LocalDate.now())
                         .acountType(AcountType.CURRENT_ACCOUNT)
                         .customerId(Long.valueOf(c.getId()))
                         .build();
-                bankAccountRepo.save(a1);
-                bankAccountRepo.save(a2);
+//                bankAccountRepo.save(a1);
+//                bankAccountRepo.save(a2);
             });
 
             BankAcount bankAcount1 = BankAcount.builder()
                     .accountId(UUID.randomUUID().toString())
                     .currency("MAD")
-                    .balence(Double.valueOf(99000))
+                    .balance(Double.valueOf(99000))
                     .createdAt(LocalDate.now())
                     .acountType(AcountType.SAVING_ACCOUNT)
                     .customerId(Long.valueOf(1))
@@ -57,14 +57,14 @@ public class AccountServiceApplication {
             BankAcount bankAcount2 = BankAcount.builder()
                     .accountId(UUID.randomUUID().toString())
                     .currency("MAD")
-                    .balence(Double.valueOf(55001))
+                    .balance(Double.valueOf(55001))
                     .createdAt(LocalDate.now())
                     .acountType(AcountType.CURRENT_ACCOUNT)
                     .customerId(Long.valueOf(2))
                     .build();
 
-            //List<BankAcount> bankAccountList = List.of(bankAcount1, bankAcount2);
-            //bankAccountRepo.saveAll(bankAccountList);
+            List<BankAcount> bankAccountList = List.of(bankAcount1, bankAcount2);
+            bankAccountRepo.saveAll(bankAccountList);
         };
     }
 
